@@ -29,5 +29,13 @@
       "functions": "never"
     }],
     "eol-last": ["error", "always"]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "no-unused-vars": "off"
+      }
+    }
+  ]
 }
