@@ -1,5 +1,5 @@
-import 'module-alias/register'
+export * from "./constants"
 
-import { helloWorld } from "~/modules/helloWorld"
-
-helloWorld()
+export * from "./utility/diff"
+export * from "./utility/getInterval"
+export * from "./utility/getNote"
