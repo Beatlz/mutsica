@@ -1,11 +1,11 @@
 import {
 	type ScaleType,
 	type Note,
-	Notes,
 	CUSTOM,
 	CustomTemplate,
 	Chord,
 	endlessArray,
+	Notes,
 } from "../.."
 
 type ChordSize = 3 | 4 | 5 | 6 | 7

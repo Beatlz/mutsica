@@ -1,4 +1,4 @@
-import { NOTES, Note, getNoteFromInterval } from ".."
+import { NOTES, Note, getNoteFromInterval } from "../"
 
 export const calculateNotes = (root: Note, template: number[]) => {
 	const rootIndex = NOTES.indexOf(root)

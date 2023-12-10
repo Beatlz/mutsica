@@ -5,7 +5,7 @@ interface ChordStructure {
   type: ChordType
 }
 
-export const splitChordNaming = (chord: string): ChordStructure => {
+export const splitChordName = (chord: string): ChordStructure => {
 	const note = NOTES.find(_note => chord.startsWith(_note))
 	const chordType = CHORD_NAMES.find(_chord => chord.endsWith(_chord))
 

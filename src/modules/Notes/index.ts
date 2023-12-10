@@ -37,11 +37,11 @@ export class Notes {
 		return this._templateType
 	}
 	private set templateType(templateType: TemplateType) {
-		this._templateType = this.templateType
+		this._templateType = templateType
 	}
 
 	get template(): number[] {
-		return this.template
+		return this._template
 	}
 
 	get notes(): Note[] {

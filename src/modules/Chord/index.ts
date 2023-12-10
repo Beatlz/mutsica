@@ -1,10 +1,5 @@
-import {
-	type Note,
-	type ChordType,
-	Notes,
-	CUSTOM,
-	CustomTemplate,
-} from "../.."
+import { CUSTOM, ChordType, CustomTemplate, Note } from "../.."
+import { Notes } from "../Notes"
 
 export class Chord extends Notes {
 	constructor(root: Note, chordType: ChordType | CustomTemplate = CUSTOM, template: number[] = []) {
