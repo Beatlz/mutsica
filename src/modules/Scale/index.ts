@@ -5,8 +5,9 @@ import {
 	CustomTemplate,
 	Chord,
 	endlessArray,
-	Notes,
+	getIntervalFromNote,
 } from "../.."
+import { Notes } from "../Notes"
 
 type ChordSize = 3 | 4 | 5 | 6 | 7
 
@@ -27,23 +28,17 @@ export class Scale extends Notes {
 		this._chords = chords
 	}
 
-	chordTemplates(size: ChordSize = 3) {
-		const chords = this.notes.map((note, index) => {
-			const chordTemplate: number[] = []
+	createChords(size: ChordSize = 3) {
+		this.chords = this.notes.map((note, index) => {
+			const chord: number[] = []
 
-			for (let i = 1; i <= size; i++) {
-				const interval = endlessArray(this.template, index, index + 2 * i)
+			for (let i = 1; i <= size - 1; i++) {
+				const third = endlessArray(this.notes, index, 2 * i)
 
-				chordTemplate.push(interval < index ? interval + this.template.length - index : interval)
+				chord.push(getIntervalFromNote(note, third))
 			}
 
-			return chordTemplate
+			return new Chord(note, `custom`, chord)
 		})
-
-		return chords
-	}
-
-	createChords() {
-		this.chords = this.chordTemplates().map(template => new Chord(this.root, CUSTOM, template))
 	}
 }
