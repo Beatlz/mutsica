@@ -1,6 +1,10 @@
 export const NOTES = [`C`, `C#`, `D`, `D#`, `E`, `F`, `F#`, `G`, `G#`, `A`, `A#`, `B`] as const
 export type Note = typeof NOTES[number]
 
+export type CustomTemplate = `custom`
+
+export const CUSTOM: CustomTemplate = `custom`
+
 export const INTERVALS = [
 	`root`, `min2`, `maj2`, `min3`, `maj3`, 
 	`perf4`, `aug4`, `tritone`, `perf5`, `dim5`, `aug5`, `min6`, `maj6`, 
@@ -41,8 +45,8 @@ export const CHORD_NAMES = [
 	`6`, `min6`, 
 	`9`, `maj9`, `min9`, `11`, `13`,
 ] as const
-export type ChordPreset = typeof CHORD_NAMES[number]
-export const CHORDS: Record<ChordPreset, number[]> = {
+export type ChordType = typeof CHORD_NAMES[number]
+export const CHORDS: Record<ChordType, number[]> = {
 	'maj': [4, 7],
 	'min': [3, 7],
 	'dim': [3, 6],
@@ -73,8 +77,8 @@ export const SCALE_NAMES = [
 	`harmonicMinor2`, `harmonicMinor3`, `harmonicMinor4`, `harmonicMinor5`, `harmonicMinor6`, `harmonicMinor7`,
 	`harmonicMajor2`, `harmonicMajor3`, `harmonicMajor4`, `harmonicMajor5`, `harmonicMajor6`, `harmonicMajor7`,
 ] as const
-export type Scale = typeof SCALE_NAMES[number];
-export const SCALES: Record<Scale, number[]> = {
+export type ScaleType = typeof SCALE_NAMES[number];
+export const SCALES: Record<ScaleType, number[]> = {
 	'major': [2, 4, 5, 7, 9, 11],
 	'minor': [2, 3, 5, 7, 8, 10],
 	'melodicMinor': [2, 3, 5, 7, 9, 11],

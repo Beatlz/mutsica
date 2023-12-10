@@ -1,3 +1,3 @@
-import { NOTES } from "../"
+import { NOTES, endlessArray } from "../"
 
-export const getNote = (root: number, steps: number) => root + steps % NOTES.length
+export const getNote = (rootIndex: number, steps: number) => endlessArray(NOTES, rootIndex, steps)
