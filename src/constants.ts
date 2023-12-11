@@ -2,8 +2,11 @@ export const NOTES = [`C`, `C#`, `D`, `D#`, `E`, `F`, `F#`, `G`, `G#`, `A`, `A#`
 export type Note = typeof NOTES[number]
 
 export type CustomTemplate = `custom`
-
 export const CUSTOM: CustomTemplate = `custom`
+
+export type Tonality = `maj` | `m`
+export const MAJOR: Tonality = `maj`
+export const MINOR: Tonality = `m`
 
 export const INTERVALS = [
 	`root`, `m2`, `maj2`, `m3`, `maj3`, 
@@ -46,7 +49,7 @@ export const CHORD_NAMES = [
 	`9`, `maj9`, `m9`, `11`, `13`,
 ] as const
 export type ChordType = typeof CHORD_NAMES[number]
-export const CHORDS: Record<ChordType, number[]> = {
+export const CHORD_TEMPLATES: Record<ChordType, number[]> = {
 	'maj': [4, 7],
 	'm': [3, 7],
 	'dim': [3, 6],
@@ -78,7 +81,7 @@ export const SCALE_NAMES = [
 	`harmonicMajor2`, `harmonicMajor3`, `harmonicMajor4`, `harmonicMajor5`, `harmonicMajor6`, `harmonicMajor7`,
 ] as const
 export type ScaleType = typeof SCALE_NAMES[number];
-export const SCALES: Record<ScaleType, number[]> = {
+export const SCALE_TEMPLATES: Record<ScaleType, number[]> = {
 	'major': [2, 4, 5, 7, 9, 11],
 	'm': [2, 3, 5, 7, 8, 10],
 	'melodicMinor': [2, 3, 5, 7, 9, 11],
@@ -112,4 +115,32 @@ export const SCALES: Record<ScaleType, number[]> = {
 	'harmonicMajor5': [2, 4, 5, 8, 9, 10], // Mixolydian ♭2
 	'harmonicMajor6': [1, 3, 5, 6, 8, 10], // Lydian Augmented ♯2
 	'harmonicMajor7': [2, 4, 5, 7, 8, 10], // Locrian ♭♭3
+}
+export interface ChordStructure {
+  degree: RomanNumeral
+  chordType: ChordType
+  alteration: string
+}
+
+export const MAJOR_ROMAN_NUMERALS = [`I`, `II`, `III`, `IV`, `V`, `VI`, `VII`] as const
+export const MINOR_ROMAN_NUMERALS = [`i`, `ii`, `iii`, `iv`, `v`, `vi`, `vii`] as const
+export const ROMAN_NUMERALS = [...MAJOR_ROMAN_NUMERALS, ...MINOR_ROMAN_NUMERALS] as const
+export type RomanNumeral = typeof ROMAN_NUMERALS[number]
+export const ROMAN_NUMERAL_INTERVALS: Partial<Record<RomanNumeral, number>> = {
+	i: 0,
+	ii: 1,
+	iii: 2,
+	iv: 3,
+	v: 4,
+	vi: 5,
+	vii: 6,
+}
+
+export const ALTERATION_MODIFIERS = {
+	dim: -1,
+	aug: 1,
+	"#": 1,
+	"##": 2,
+	bb: -2,
+	b: -1,
 }

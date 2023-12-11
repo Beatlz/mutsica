@@ -2,10 +2,10 @@ import {
 	type ChordType,
 	type ScaleType,
 	type Note,
-	SCALES,
+	SCALE_TEMPLATES,
 	calculateNotes,
 	CUSTOM,
-	CHORDS,
+	CHORD_TEMPLATES,
 	CustomTemplate,
 	findTemplate,
 } from "../.."
@@ -23,7 +23,7 @@ export class Notes {
 		this._templateType = templateType
 		this._template = templateType === CUSTOM
 			? template
-			: SCALES[templateType as ScaleType] || CHORDS[templateType as ChordType]
+			: SCALE_TEMPLATES[templateType as ScaleType] || CHORD_TEMPLATES[templateType as ChordType]
 		this._notes = calculateNotes(root, this._template)
 
 		if (templateType === CUSTOM && !template.length) console.warn(`No template provided.`)
