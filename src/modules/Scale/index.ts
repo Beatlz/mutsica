@@ -1,11 +1,9 @@
 import {
-	type ScaleType,
 	type Note,
-	CUSTOM,
-	CustomTemplate,
 	Chord,
 	endlessArray,
 	getIntervalFromNote,
+	SCALE,
 } from "../.."
 import { Notes } from "../Notes"
 
@@ -14,10 +12,13 @@ type ChordSize = 3 | 4 | 5 | 6 | 7
 export class Scale extends Notes {
 	_chords: Chord[] = []
 
-	constructor(root: Note, chordType: ScaleType | CustomTemplate = CUSTOM, template: number[] = []) {
-		super(root, chordType, template)
+	constructor(root: Note, template: number[]) {
+		super({
+			root,
+			template,
+			templateType: SCALE,
+		})
 
-		this.updateTemplate(`scale`)
 		this.createChords()
 	}
 
@@ -38,7 +39,7 @@ export class Scale extends Notes {
 				chord.push(getIntervalFromNote(note, third))
 			}
 
-			return new Chord(note, `custom`, chord)
+			return new Chord(note, chord)
 		})
 	}
 }

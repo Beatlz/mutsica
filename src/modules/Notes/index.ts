@@ -1,32 +1,39 @@
 import {
-	type ChordType,
-	type ScaleType,
 	type Note,
-	SCALE_TEMPLATES,
 	calculateNotes,
 	CUSTOM,
-	CHORD_TEMPLATES,
-	CustomTemplate,
+	// findTemplate,
+	TemplateType,
 	findTemplate,
+	getChord,
+	getScale,
+	CHORD,
 } from "../.."
 
-type TemplateType = ScaleType | ChordType | CustomTemplate
+interface NotesConstructor {
+	root: Note
+	templateType: TemplateType
+	template: number[]
+}
 
 export class Notes {
 	private _root: Note
 	private _template: number[]
+	private _name: string
 	private _notes: Note[]
-	private _templateType: TemplateType = CUSTOM
+	private _templateType: TemplateType
 
-	constructor(root: Note, templateType: TemplateType, template: number[] = []) {
+	constructor(init: NotesConstructor) {
+		const { root, template, templateType } = init
+
 		this._root = root
 		this._templateType = templateType
-		this._template = templateType === CUSTOM
-			? template
-			: SCALE_TEMPLATES[templateType as ScaleType] || CHORD_TEMPLATES[templateType as ChordType]
+		this._template = template
 		this._notes = calculateNotes(root, this._template)
+		
+		const isPreset = findTemplate(template, templateType)
 
-		if (templateType === CUSTOM && !template.length) console.warn(`No template provided.`)
+		this._name = isPreset ? isPreset.shift() : CUSTOM
 	}
 
 	get root(): Note {
@@ -40,6 +47,13 @@ export class Notes {
 		this._templateType = templateType
 	}
 
+	get name(): string {
+		return this._name
+	}
+	private set name(name: string) {
+		this._name = name
+	}
+
 	get template(): number[] {
 		return this._template
 	}
@@ -51,23 +65,24 @@ export class Notes {
 		this._notes = notes
 	}
 
+	getTemplate() {
+		const searchIn = this.templateType === CHORD ? getChord : getScale
+		const result = searchIn(this.name)
+
+		return result
+	}
+
 	addNote(note: Note) {
 		if (this.notes.includes(note)) return
 
-		if (this.templateType !== `custom`) throw new Error(`Can't modify notes of a ${this.root}${this.templateType}`)
+		if (this.name !== `custom`) throw new Error(`Can't modify notes of a ${this.root}${this.templateType}`)
 
 		this.notes.push(note)
 	}
 
 	removeNote(note: Note) {
-		if (this.templateType !== `custom`) throw new Error(`Can't modify notes of a ${this.root}${this.templateType}`)
+		if (this.name !== `custom`) throw new Error(`Can't modify notes of a ${this.root}${this.templateType}`)
 
 		this.notes.filter(item => item !== note)
-	}
-
-	updateTemplate(templateType: `chord` | `scale`) {
-		const result = findTemplate(templateType, this.template)
-
-		if (result) this.templateType = result.shift() as TemplateType
 	}
 }

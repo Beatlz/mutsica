@@ -5,7 +5,7 @@ describe(`parseChordFromRoman`, () => {
 		const notation = `IVmaj7#9`
 		const expected = {
 			degree: `IV`,
-			chordType: `maj7`,
+			name: `maj7`,
 			alteration: `#9`,
 		}
 
@@ -16,7 +16,7 @@ describe(`parseChordFromRoman`, () => {
 		const notation = `vi`
 		const expected = {
 			degree: `vi`,
-			chordType: ``,
+			name: ``,
 			alteration: ``,
 		}
 

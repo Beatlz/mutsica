@@ -1,17 +1,19 @@
-import { CUSTOM, ChordType, CustomTemplate, Note } from "../.."
+import { CHORD, CUSTOM, Note } from "../.."
 import { Notes } from "../Notes"
 
 export class Chord extends Notes {
-	constructor(root: Note, chordType: ChordType | CustomTemplate = CUSTOM, template: number[] = []) {
-		super(root, chordType, template)
-
-		this.updateTemplate(`chord`)
+	constructor(root: Note, template: number[]) {
+		super({
+			root,
+			template,
+			templateType: CHORD,
+		})
 	}
 
-	name(): string {
-		return this.templateType === CUSTOM
+	chordName(): string {
+		return this.name === CUSTOM
 			? `${this.root} ${CUSTOM}`
-			: `${this.root}${this.templateType}`
+			: `${this.root}${this.name}`
 	}
 
 	invert(n: number) {

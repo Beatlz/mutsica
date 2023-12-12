@@ -1,6 +1,6 @@
 import {
 	ChordStructure,
-	ChordType,
+	ChordConst,
 	RomanNumeral,
 	// MAJOR_ROMAN_NUMERALS,
 } from ".."
@@ -30,5 +30,5 @@ export const parseChordFromRoman = (roman: string): ChordStructure => {
 		}
 	}
 
-	return { degree: degree as RomanNumeral, chordType: chordType as ChordType, alteration }
+	return { degree: degree as RomanNumeral, name: chordType as ChordConst, alteration }
 }
