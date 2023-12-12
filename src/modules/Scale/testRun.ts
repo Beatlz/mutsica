@@ -1,6 +1,8 @@
-import { SCALES, Scale } from "../.."
+import { SCALES, Scale, getIntervalName } from "../.."
 
-const major = SCALES.maj.template
-const C = new Scale(`C`, major)
+const C = new Scale(`C`, SCALES.melodicMinor3.template)
 
-console.log(C.chords)
+C.createChords(4)
+
+console.log(C.template.map(interval => getIntervalName(interval)))
+console.log(C.chords[6].notes)

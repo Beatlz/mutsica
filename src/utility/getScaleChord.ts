@@ -28,6 +28,7 @@ export const CHORDS: { [key: string]: ChordBuildingBlock } = {
 	"dim": { type: `chord`, template: [3, 6] },
 	"aug": { type: `chord`, template: [4, 8] },
 	"dom7": { type: `chord`, template: [4, 7, 10] },
+	"b5b7": { type: `chord`, template: [3, 6, 10] },
 	"maj7": { type: `chord`, template: [4, 7, 11] },
 	"m7": { type: `chord`, template: [3, 7, 10] },
 	"dim7": { type: `chord`, template: [3, 6, 9] },
