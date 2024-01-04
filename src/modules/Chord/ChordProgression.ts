@@ -1,15 +1,26 @@
-import { Note } from "../.."
+import { Scale, parseChordFromRoman } from "../.."
 
 export class ChordProgression {
-	private _root: Note
-	chordProgression: string[]
-  
-	constructor (root: Note, chordProgression: string[]) {
-		this._root = root
-		this.chordProgression = chordProgression
+	private _scale: Scale
+	progression: number[][]
+
+	constructor(scale: Scale, progression: number[][]) {
+		this._scale =	scale
+		this.progression = progression
 	}
 
-	get root(): Note {
-		return this._root
+	get scale(): Scale {
+		return this._scale
+	}
+	set scale(scale: Scale) {
+		this._scale = scale
+	}
+
+	parseTemplates(items: (string | number)[]) {
+		return items.map(item => {
+			if (typeof item !== `string`) return item
+
+			parseChordFromRoman(item)
+		})
 	}
 }

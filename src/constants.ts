@@ -39,7 +39,7 @@ export const INTERVAL_DISTANCES: Record<Interval, number> = {
 }
 
 export interface ChordStructure {
-  degree: RomanNumeral
+  degree: number
   name: string
   alteration: string
 }

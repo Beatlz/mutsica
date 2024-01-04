@@ -45,6 +45,8 @@ export const CHORDS: { [key: string]: ChordBuildingBlock } = {
 	"13": { type: `chord`, template: [4, 7, 10, 14, 17, 21] },
 }
 
+export const chordNames = Object.keys(CHORDS)
+
 export const SCALES: { [key: string]: ScaleBuildingBlock } = {
 	"maj": { type: `scale`, template: [2, 4, 5, 7, 9, 11] },
 	"m": { type: `scale`, template: [2, 3, 5, 7, 8, 10] },
@@ -80,6 +82,8 @@ export const SCALES: { [key: string]: ScaleBuildingBlock } = {
 	"harmonicMajor6": { type: `scale`, template: [1, 3, 5, 6, 8, 10] }, // Lydian Augmented ♯2
 	"harmonicMajor7": { type: `scale`, template: [2, 4, 5, 7, 8, 10] }, // Locrian ♭♭3
 }
+
+export const scaleNames = Object.keys(SCALES)
 
 export const chordsAndScales = { ...CHORDS, ...SCALES }
 
