@@ -7,7 +7,9 @@
     "strict": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
+    "declaration": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"],
@@ -15,6 +17,6 @@
     },
     "lib": ["ES2021", "DOM"]
   },
-  "include": ["src/**/*.ts", "src/sum.test.js"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
 }
