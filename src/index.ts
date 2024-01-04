@@ -13,4 +13,6 @@ export * from "./utility/getIntervalName"
 export * from "./utility/endlessArray"
 export * from "./utility/parseChordFromRoman"
 export * from "./utility/getScaleChord"
+export * from "./utility/sortNotes"
+
 export * from "./core"
