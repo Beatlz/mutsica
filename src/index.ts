@@ -3,6 +3,7 @@ export * from "./constants"
 export * from "./modules/Chord"
 export * from "./modules/Notes"
 export * from "./modules/Scale"
+export * from "./modules/Sequencer"
 
 export * from "./utility/diff"
 export * from "./utility/getNoteFromInterval"
