@@ -1,7 +1,7 @@
 import * as Tone from "tone"
 
-import { Note } from "~/constants"
-import { getSortedNotes } from "~/utility/sortNotes"
+import { Note } from "../../constants"
+import { getSortedNotes } from "../../utility/sortNotes"
 
 export interface SequencerInitSettings {
   tempo?: number
