@@ -39,6 +39,14 @@ export class Notes {
 	get root(): Note {
 		return this._root
 	}
+	set root(root: Note) {
+		this.root = root
+		this.notes = calculateNotes(root, this.template)
+
+		const isPreset = findTemplate(this.template, this.templateType)
+
+		this.name = isPreset ? isPreset.shift() : CUSTOM
+	}
 
 	get templateType(): TemplateType {
 		return this._templateType
@@ -84,5 +92,11 @@ export class Notes {
 		if (this.name !== `custom`) throw new Error(`Can't modify notes of a ${this.root}${this.templateType}`)
 
 		this.notes.filter(item => item !== note)
+	}
+	
+	modulate(note: Note) {
+		if (this.root === note) return
+
+		this.root = note
 	}
 }

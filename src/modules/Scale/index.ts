@@ -4,6 +4,7 @@ import {
 	endlessArray,
 	getIntervalFromNote,
 	SCALE,
+	getScale,
 } from "../.."
 import { Notes } from "../Notes"
 
@@ -12,7 +13,9 @@ type ChordSize = 3 | 4 | 5 | 6 | 7
 export class Scale extends Notes {
 	_chords: Chord[] = []
 
-	constructor(root: Note, template: number[]) {
+	constructor(root: Note, template: number[] | string) {
+		if (typeof template === `string`) template = getScale(template).template
+
 		super({
 			root,
 			template,

@@ -87,7 +87,7 @@ export const scaleNames = Object.keys(SCALES)
 
 export const chordsAndScales = { ...CHORDS, ...SCALES }
 
-export const getChord = (chord: string) => {
+export const getChord = (chord: keyof typeof CHORDS) => {
 	if (chord === CUSTOM) return
 
 	if (!(chord in CHORDS)) {
@@ -97,11 +97,15 @@ export const getChord = (chord: string) => {
 	return CHORDS[chord]
 }
 
-export const getScale = (scale: string) => {
-	if (scale === CUSTOM) return
-
+export const getScale = (scale: keyof typeof SCALES) => {
 	if (!(scale in SCALES)) {
-		throw new Error (`Scale not found`)
+		console.warn(`Scale not found`)
+
+		return {
+			name: `scale not found`,
+			type: `scale`,
+			template: [],
+		}
 	}
 
 	return SCALES[scale]

@@ -26,12 +26,14 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "module-alias": "^2.2.3"
+    "module-alias": "^2.2.3",
+    "tone": "^14.7.77"
   },
   "peerDependencies": {
     "@jest/globals": "^29.7.0",
     "@types/jest": "^29.5.11",
-    "ts-jest": "^29.1.1"
+    "ts-jest": "^29.1.1",
+    "tone": "^14.7.77"
   },
   "_moduleAliases": {
     "~": "dist",
