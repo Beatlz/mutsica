@@ -5,8 +5,8 @@ import {
 	// findTemplate,
 	TemplateType,
 	findTemplate,
-	getChord,
-	getScale,
+	getChordBlock,
+	getScaleBlock,
 	CHORD,
 } from "../.."
 
@@ -74,7 +74,7 @@ export class Notes {
 	}
 
 	getTemplate() {
-		const searchIn = this.templateType === CHORD ? getChord : getScale
+		const searchIn = this.templateType === CHORD ? getChordBlock : getScaleBlock
 		const result = searchIn(this.name)
 
 		return result

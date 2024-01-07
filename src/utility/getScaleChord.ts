@@ -1,3 +1,5 @@
+import { Note, calculateNotes } from ".."
+
 export type ChordConst = `chord`
 export type ScaleConst = `scale`
 export type CustomConst = `custom`
@@ -54,7 +56,7 @@ export const SCALES: { [key: string]: ScaleBuildingBlock } = {
 	"harmonicMajor": { type: `scale`, template: [2, 4, 5, 7, 8, 11] },
 	"harmonicMinor": { type: `scale`, template: [2, 3, 5, 7, 8, 11] },
 	"pentatonicMajor": { type: `scale`, template: [2, 4, 7, 9] },
-	"pentatonicmor": { type: `scale`, template: [3, 5, 7, 10] },
+	"pentatonicMinor": { type: `scale`, template: [3, 5, 7, 10] },
 	"blues": { type: `scale`, template: [3, 5, 6, 7, 10] },
 	"dorian": { type: `scale`, template: [2, 3, 5, 7, 9, 10] },
 	"phrygian": { type: `scale`, template: [1, 3, 5, 7, 8, 10] },
@@ -87,7 +89,7 @@ export const scaleNames = Object.keys(SCALES)
 
 export const chordsAndScales = { ...CHORDS, ...SCALES }
 
-export const getChord = (chord: keyof typeof CHORDS) => {
+export const getChordBlock = (chord: keyof typeof CHORDS) => {
 	if (chord === CUSTOM) return
 
 	if (!(chord in CHORDS)) {
@@ -97,7 +99,7 @@ export const getChord = (chord: keyof typeof CHORDS) => {
 	return CHORDS[chord]
 }
 
-export const getScale = (scale: keyof typeof SCALES) => {
+export const getScaleBlock = (scale: keyof typeof SCALES) => {
 	if (!(scale in SCALES)) {
 		console.warn(`Scale not found`)
 
@@ -109,6 +111,14 @@ export const getScale = (scale: keyof typeof SCALES) => {
 	}
 
 	return SCALES[scale]
+}
+
+export const getChord = (root: Note, chord: keyof typeof CHORDS) => {
+	calculateNotes(root, CHORDS[chord].template)
+}
+
+export const getScale = (root: Note, scale: keyof typeof SCALES) => {
+	calculateNotes(root, SCALES[scale].template)
 }
 
 export const findTemplate = (template: number[], templateType: TemplateType) => {
