@@ -1,11 +1,11 @@
 import * as Tone from "tone"
 
-import { Note } from "../../constants"
+import { NoteName } from "../../constants"
 import { getSortedNotes } from "../../utility/sortNotes"
 
 export interface SequencerInitSettings {
   tempo?: number
-  scale?: Note[]
+  scale?: NoteName[]
   octaves?: number
   lowOctave?: number
   steps?: number
@@ -19,7 +19,7 @@ export class Sequencer {
 	private _isPlaying = false
 	private _currentStep = 0
 	private _tempo = 120
-	private _scale: Note[] = [`C`, `D`, `E`, `F`, `G`, `A`, `B`]
+	private _scale: NoteName[] = [`C`, `D`, `E`, `F`, `G`, `A`, `B`]
 	private loop: Tone.Loop | null = null
 
 	octaves = 3
@@ -70,10 +70,10 @@ export class Sequencer {
 		this.octaves = sequence.length / this.scale?.length
 	}
 
-	get scale(): Note[] {
+	get scale(): NoteName[] {
 		return this._scale
 	}
-	set scale(scale: Note[]) {
+	set scale(scale: NoteName[]) {
 		this._scale = scale
 		this.notes = this.getSortedSequenceNotes()
 	}

@@ -1,10 +1,10 @@
-import { NOTES, type Note } from ".."
+import { NOTE_NAMES, type NoteName } from ".."
 
-export const getNextNoteWithOctave = (firstNoteWithOctave: string, secondNote: Note) => {
+export const getNextNoteWithOctave = (firstNoteWithOctave: string, secondNote: NoteName) => {
 	const firstNote = firstNoteWithOctave.slice(0, -1)
 	const firstOctave = parseInt(firstNoteWithOctave.slice(-1), 10)
-	const firstNoteIndex = NOTES.findIndex(n => n === firstNote)
-	const secondNoteIndex = NOTES.findIndex(n => n === secondNote)
+	const firstNoteIndex = NOTE_NAMES.findIndex(n => n === firstNote)
+	const secondNoteIndex = NOTE_NAMES.findIndex(n => n === secondNote)
 
 	if (secondNoteIndex <= firstNoteIndex || !secondNoteIndex) {
 		return `${secondNote}${firstOctave + 1}`
@@ -13,7 +13,7 @@ export const getNextNoteWithOctave = (firstNoteWithOctave: string, secondNote: N
 	return `${secondNote}${firstOctave}`
 }
 
-export const getSortedNotes = (scale: Note[], octaves: number, firstOctave: number) => {
+export const getSortedNotes = (scale: NoteName[], octaves: number, firstOctave: number) => {
 	const notes: string[] = []
   
 	let currentNoteIndex = 0

@@ -1,4 +1,4 @@
-import { Note, calculateNotes } from ".."
+import { NoteName, calculateNotes } from ".."
 
 export type ChordConst = `chord`
 export type ScaleConst = `scale`
@@ -113,9 +113,9 @@ export const getScaleBlock = (scale: keyof typeof SCALES) => {
 	return SCALES[scale]
 }
 
-export const getChord = (root: Note, chord: keyof typeof CHORDS) => calculateNotes(root, CHORDS[chord].template)
+export const getChord = (root: NoteName, chord: keyof typeof CHORDS) => calculateNotes(root, CHORDS[chord].template)
 
-export const getScale = (root: Note, scale: keyof typeof SCALES) => calculateNotes(root, SCALES[scale].template)
+export const getScale = (root: NoteName, scale: keyof typeof SCALES) => calculateNotes(root, SCALES[scale].template)
 
 export const findTemplate = (template: number[], templateType: TemplateType) => {
 	const searchIn = templateType === CHORD ? CHORDS : SCALES

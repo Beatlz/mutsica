@@ -1,8 +1,8 @@
-import { CHORD, CUSTOM, Note } from "../.."
+import { CHORD, CUSTOM, NoteName } from "../.."
 import { Notes } from "../Notes"
 
 export class Chord extends Notes {
-	constructor(root: Note, template: number[]) {
+	constructor(root: NoteName, template: number[]) {
 		super({
 			root,
 			template,

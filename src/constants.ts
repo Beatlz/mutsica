@@ -1,5 +1,5 @@
-export const NOTES = [`C`, `C#`, `D`, `D#`, `E`, `F`, `F#`, `G`, `G#`, `A`, `A#`, `B`] as const
-export type Note = typeof NOTES[number]
+export const NOTE_NAMES = [`C`, `C#`, `D`, `D#`, `E`, `F`, `F#`, `G`, `G#`, `A`, `A#`, `B`] as const
+export type NoteName = typeof NOTE_NAMES[number]
 
 export type Tonality = `maj` | `m`
 export const MAJOR: Tonality = `maj`
