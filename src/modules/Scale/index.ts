@@ -5,6 +5,7 @@ import {
 	getIntervalFromNote,
 	SCALE,
 	getScaleBlock,
+	ScaleName,
 } from "../.."
 import { Notes } from "../Notes"
 
@@ -14,7 +15,7 @@ export class Scale extends Notes {
 	_chords: Chord[] = []
 
 	constructor(root: NoteName, template: number[] | string) {
-		if (typeof template === `string`) template = getScaleBlock(template).template
+		if (typeof template === `string`) template = getScaleBlock(template as ScaleName).template
 
 		super({
 			root,

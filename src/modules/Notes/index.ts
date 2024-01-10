@@ -73,12 +73,14 @@ export class Notes {
 		this._notes = notes
 	}
 
-	getTemplate() {
-		const searchIn = this.templateType === CHORD ? getChordBlock : getScaleBlock
-		const result = searchIn(this.name)
+	// getTemplate() {
+	// 	const searchIn = this.templateType === CHORD
+	// 		? getChordBlock
+	// 		: getScaleBlock
+	// 	const result = searchIn(this.name)
 
-		return result
-	}
+	// 	return result
+	// }
 
 	addNote(note: NoteName) {
 		if (this.notes.includes(note)) return

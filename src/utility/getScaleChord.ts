@@ -24,7 +24,11 @@ export interface ChordBuildingBlock extends BuildingBlock {
 	type: `chord`
 }
 
-export const CHORDS: { [key: string]: ChordBuildingBlock } = {
+export const CHORD_NAMES = ["maj", "m", "dim", "aug", "dom7", "b5b7", "maj7", "m7", "dim7", "mMaj7", "aug7", "sus2", "sus4", "6", "m6", "9", "maj9", "m9", "11", "13"] as const
+
+export type ChordName = typeof CHORD_NAMES[number]
+
+export const CHORDS: Record<ChordName, ChordBuildingBlock> = {
 	"maj": { type: `chord`, template: [4, 7] },
 	"m": { type: `chord`, template: [3, 7] },
 	"dim": { type: `chord`, template: [3, 6] },
@@ -47,9 +51,11 @@ export const CHORDS: { [key: string]: ChordBuildingBlock } = {
 	"13": { type: `chord`, template: [4, 7, 10, 14, 17, 21] },
 }
 
-export const chordNames = Object.keys(CHORDS)
+export const SCALE_NAMES = [ "maj", "m", "melodicMinor", "harmonicMajor", "harmonicMinor", "pentatonicMajor", "pentatonicMinor", "blues", "dorian", "phrygian", "lydian", "mixolydian", "locrian", "wholeTone", "chromatic", "melodicMinor2", "melodicMinor3", "melodicMinor4", "melodicMinor5", "melodicMinor6", "melodicMinor7", "harmonicMinor2", "harmonicMinor3", "harmonicMinor4", "harmonicMinor5", "harmonicMinor6", "harmonicMinor7", "harmonicMajor2", "harmonicMajor3", "harmonicMajor4", "harmonicMajor5", "harmonicMajor6", "harmonicMajor7"] as const
 
-export const SCALES: { [key: string]: ScaleBuildingBlock } = {
+export type ScaleName = typeof SCALE_NAMES[number]
+
+export const SCALES: Record<ScaleName, ScaleBuildingBlock> = {
 	"maj": { type: `scale`, template: [2, 4, 5, 7, 9, 11] },
 	"m": { type: `scale`, template: [2, 3, 5, 7, 8, 10] },
 	"melodicMinor": { type: `scale`, template: [2, 3, 5, 7, 9, 11] },
@@ -89,7 +95,7 @@ export const scaleNames = Object.keys(SCALES)
 
 export const chordsAndScales = { ...CHORDS, ...SCALES }
 
-export const getChordBlock = (chord: keyof typeof CHORDS) => {
+export const getChordBlock = (chord: ChordName | CustomConst) => {
 	if (chord === CUSTOM) return
 
 	if (!(chord in CHORDS)) {
@@ -99,7 +105,7 @@ export const getChordBlock = (chord: keyof typeof CHORDS) => {
 	return CHORDS[chord]
 }
 
-export const getScaleBlock = (scale: keyof typeof SCALES) => {
+export const getScaleBlock = (scale: ScaleName) => {
 	if (!(scale in SCALES)) {
 		console.warn(`Scale not found`)
 
