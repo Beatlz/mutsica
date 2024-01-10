@@ -1,5 +1,6 @@
-import { CHORD, CUSTOM, NoteName } from "../.."
+import { CHORD, CUSTOM, NoteName, getSortedNotes } from "../.."
 import { Notes } from "../Notes"
+import { Frequency } from "tone/build/esm/core/type/Units"
 
 export class Chord extends Notes {
 	constructor(root: NoteName, template: number[]) {
@@ -21,6 +22,14 @@ export class Chord extends Notes {
 
 		if (n >= chordSize) throw new Error(`Invalid inversion number`)
 
-		this.notes = [...this.notes.slice(n, chordSize), ...this.notes.slice(0, n)]
+		return [...this.notes.slice(n, chordSize), ...this.notes.slice(0, n)]
+	}
+
+	closed(bassNote = 3): Frequency[] {
+		return getSortedNotes(this.notes, 1, bassNote)
+	}
+
+	open({ bassNote, brilliance }: { bassNote?: number, brilliance?: 2 | 3 | 4 }): Frequency[] {
+		return getSortedNotes(this.notes, brilliance || 2, bassNote || 3)
 	}
 }
