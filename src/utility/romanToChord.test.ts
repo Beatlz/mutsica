@@ -14,7 +14,7 @@ describe(`romanToChord`, () => {
 		const notes = new Chord(`C`, template).notes
 		const cMaj = new Scale(`C`, `maj`)
 
-		expect(notes).toEqual([`C`, `E`, `G`, `A#`])
+		expect(notes).toStrictEqual([`C`, `E`, `G`, `A#`])
 		expect(degreeNumber).toEqual(6)
 		expect(cMaj.notes[degreeNumber]).toEqual(`B`)
 	})
