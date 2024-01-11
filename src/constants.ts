@@ -8,7 +8,7 @@ export const MINOR: Tonality = `m`
 export const INTERVALS = [
 	`root`, `m2`, `maj2`, `m3`, `maj3`, 
 	`perf4`, `aug4`, `tritone`, `perf5`, `dim5`, `aug5`, `m6`, `maj6`, 
-	`m7`, `maj7`, `octave`, `m9`, `maj9`, 
+	`m7`, `maj7`, `octave`, `m9`, `maj9`, `#9`, `#11`,
 	`perf11`, `aug11`, `perf12`, `m13`, `maj13`,
 ] as const
 export type Interval = typeof INTERVALS[number]
@@ -31,6 +31,8 @@ export const INTERVAL_DISTANCES: Record<Interval, number> = {
 	octave: 12,
 	m9: 13,
 	maj9: 14,
+	"#9": 15,
+	"#11": 18,
 	perf11: 17,
 	aug11: 18,
 	perf12: 19,
@@ -50,7 +52,7 @@ export const ROMAN_NUMERALS = [...MAJOR_ROMAN_NUMERALS, ...MINOR_ROMAN_NUMERALS]
 
 export type RomanNumeral = typeof ROMAN_NUMERALS[number]
 
-export const ROMAN_NUMERAL_INTERVALS: Partial<Record<RomanNumeral, number>> = {
+export const ROMAN_NUMERAL_INTERVALS: Record<RomanNumeral, number> = {
 	i: 0,
 	ii: 1,
 	iii: 2,
@@ -58,6 +60,13 @@ export const ROMAN_NUMERAL_INTERVALS: Partial<Record<RomanNumeral, number>> = {
 	v: 4,
 	vi: 5,
 	vii: 6,
+	I: 0,
+	II: 1,
+	III: 2,
+	IV: 3,
+	V: 4,
+	VI: 5,
+	VII: 6,
 }
 
 export const ALTERATION_MODIFIERS = {

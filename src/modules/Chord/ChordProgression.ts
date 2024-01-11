@@ -1,4 +1,4 @@
-import { Scale, parseChordFromRoman } from "../.."
+import { Scale, romanToChord } from "../.."
 
 export class ChordProgression {
 	private _scale: Scale
@@ -20,7 +20,7 @@ export class ChordProgression {
 		return items.map(item => {
 			if (typeof item !== `string`) return item
 
-			parseChordFromRoman(item)
+			romanToChord(item)
 		})
 	}
 }

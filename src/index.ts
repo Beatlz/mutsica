@@ -12,7 +12,7 @@ export * from "./utility/getNote"
 export * from "./utility/calculateNotes"
 export * from "./utility/getIntervalName"
 export * from "./utility/endlessArray"
-export * from "./utility/parseChordFromRoman"
+export * from "./utility/romanToChord"
 export * from "./utility/getScaleChord"
 export * from "./utility/sortNotes"
 

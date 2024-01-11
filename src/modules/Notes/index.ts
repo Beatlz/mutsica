@@ -2,12 +2,8 @@ import {
 	type NoteName,
 	calculateNotes,
 	CUSTOM,
-	// findTemplate,
 	TemplateType,
 	findTemplate,
-	getChordBlock,
-	getScaleBlock,
-	CHORD,
 } from "../.."
 
 interface NotesConstructor {
@@ -69,7 +65,7 @@ export class Notes {
 	get notes(): NoteName[] {
 		return this._notes
 	}
-	set notes(notes: NoteName[]) {
+	private set notes(notes: NoteName[]) {
 		this._notes = notes
 	}
 

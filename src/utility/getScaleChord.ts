@@ -24,7 +24,7 @@ export interface ChordBuildingBlock extends BuildingBlock {
 	type: `chord`
 }
 
-export const CHORD_NAMES = ["maj", "m", "dim", "aug", "dom7", "b5b7", "maj7", "m7", "dim7", "mMaj7", "aug7", "sus2", "sus4", "6", "m6", "9", "maj9", "m9", "11", "13"] as const
+export const CHORD_NAMES = ["maj", "m", "dim", "aug", "7", "b5b7", "maj7", "m7", "dim7", "mMaj7", "aug7", "sus2", "sus4", "6", "m6", "9", "maj9", "m9", "11", "13"] as const
 
 export type ChordName = typeof CHORD_NAMES[number]
 
@@ -33,7 +33,7 @@ export const CHORDS: Record<ChordName, ChordBuildingBlock> = {
 	"m": { type: `chord`, template: [3, 7] },
 	"dim": { type: `chord`, template: [3, 6] },
 	"aug": { type: `chord`, template: [4, 8] },
-	"dom7": { type: `chord`, template: [4, 7, 10] },
+	"7": { type: `chord`, template: [4, 7, 10] },
 	"b5b7": { type: `chord`, template: [3, 6, 10] },
 	"maj7": { type: `chord`, template: [4, 7, 11] },
 	"m7": { type: `chord`, template: [3, 7, 10] },
