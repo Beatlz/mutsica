@@ -1,9 +1,11 @@
-import { CHORD, CUSTOM, NoteName, getSortedNotes } from "../.."
+import { CHORD, CUSTOM, ChordName, NoteName, getChordBlock, getSortedNotes } from "../.."
 import { Notes } from "../Notes"
 import { Frequency } from "tone/build/esm/core/type/Units"
 
 export class Chord extends Notes {
-	constructor(root: NoteName, template: number[]) {
+	constructor(root: NoteName, template: number[] | ChordName) {
+		if (typeof template === `string`) template = getChordBlock(template).template
+
 		super({
 			root,
 			template,

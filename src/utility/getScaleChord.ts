@@ -58,46 +58,44 @@ export type ScaleName = typeof SCALE_NAMES[number]
 export const SCALES: Record<ScaleName, ScaleBuildingBlock> = {
 	"maj": { type: `scale`, template: [2, 4, 5, 7, 9, 11] },
 	"m": { type: `scale`, template: [2, 3, 5, 7, 8, 10] },
-	"melodicMinor": { type: `scale`, template: [2, 3, 5, 7, 9, 11] },
-	"harmonicMajor": { type: `scale`, template: [2, 4, 5, 7, 8, 11] },
-	"harmonicMinor": { type: `scale`, template: [2, 3, 5, 7, 8, 11] },
-	"pentatonicMajor": { type: `scale`, template: [2, 4, 7, 9] },
-	"pentatonicMinor": { type: `scale`, template: [3, 5, 7, 10] },
-	"blues": { type: `scale`, template: [3, 5, 6, 7, 10] },
-	"dorian": { type: `scale`, template: [2, 3, 5, 7, 9, 10] },
-	"phrygian": { type: `scale`, template: [1, 3, 5, 7, 8, 10] },
+	"melodicMinor": { type: `scale`, template: [2, 3, 5, 7, 9, 11], name: "Melodic minor" },
+	"harmonicMajor": { type: `scale`, template: [2, 4, 5, 7, 8, 11], name: "Harmonic major" },
+	"harmonicMinor": { type: `scale`, template: [2, 3, 5, 7, 8, 11], name: "Harmonic minor" },
+	"pentatonicMajor": { type: `scale`, template: [2, 4, 7, 9], name: "Major pentatonic" },
+	"pentatonicMinor": { type: `scale`, template: [3, 5, 7, 10], name: "Minor pentatonic" },
+	"blues": { type: `scale`, template: [3, 5, 6, 7, 10], },
+	"dorian": { type: `scale`, template: [2, 3, 5, 7, 9, 10], },
+	"phrygian": { type: `scale`, template: [1, 3, 5, 7, 8, 10], },
 	"lydian": { type: `scale`, template: [2, 4, 6, 7, 9, 11] },
 	"mixolydian": { type: `scale`, template: [2, 4, 5, 7, 9, 10] },
 	"locrian": { type: `scale`, template: [1, 3, 5, 6, 8, 10] },
-	"wholeTone": { type: `scale`, template: [2, 4, 6, 8, 10] },
+	"wholeTone": { type: `scale`, template: [2, 4, 6, 8, 10], name: "Whole tone" },
 	"chromatic": { type: `scale`, template: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] },
-	"melodicMinor2": { type: `scale`, template: [2, 4, 6, 8, 9, 11] }, // Dorian ♭2
-	"melodicMinor3": { type: `scale`, template: [1, 4, 5, 7, 8, 10] }, // Lydian Augmented
-	"melodicMinor4": { type: `scale`, template: [2, 4, 6, 7, 9, 10] }, // Lydian Dominant
-	"melodicMinor5": { type: `scale`, template: [2, 4, 5, 7, 9, 10] }, // Mixolydian ♭6
-	"melodicMinor6": { type: `scale`, template: [2, 3, 5, 7, 8, 9] }, // Locrian ♮2
-	"melodicMinor7": { type: `scale`, template: [1, 3, 4, 6, 8, 9] }, // Altered Scale (Super Locrian)
-	"harmonicMinor2": { type: `scale`, template: [1, 3, 5, 7, 8, 11] }, // Locrian ♮6
-	"harmonicMinor3": { type: `scale`, template: [2, 4, 5, 7, 9, 11] }, // Ionian Augmented
-	"harmonicMinor4": { type: `scale`, template: [2, 4, 6, 7, 8, 10] }, // Dorian ♯4
-	"harmonicMinor5": { type: `scale`, template: [2, 4, 5, 7, 8, 11] }, // Phrygian Dominant
-	"harmonicMinor6": { type: `scale`, template: [2, 3, 5, 7, 9, 10] }, // Lydian ♯2
-	"harmonicMinor7": { type: `scale`, template: [1, 3, 4, 6, 7, 10] }, // Super Locrian ♭♭7 (Altered ♭♭7)
-	"harmonicMajor2": { type: `scale`, template: [2, 3, 5, 7, 9, 11] }, // Dorian ♭5
-	"harmonicMajor3": { type: `scale`, template: [1, 4, 5, 7, 8, 10] }, // Phrygian ♭4
-	"harmonicMajor4": { type: `scale`, template: [2, 4, 6, 7, 9, 11] }, // Lydian Minor
-	"harmonicMajor5": { type: `scale`, template: [2, 4, 5, 8, 9, 10] }, // Mixolydian ♭2
-	"harmonicMajor6": { type: `scale`, template: [1, 3, 5, 6, 8, 10] }, // Lydian Augmented ♯2
-	"harmonicMajor7": { type: `scale`, template: [2, 4, 5, 7, 8, 10] }, // Locrian ♭♭3
+	"melodicMinor2": { type: `scale`, template: [2, 4, 6, 8, 9, 11], name: "Dorian ♭2" },
+	"melodicMinor3": { type: `scale`, template: [1, 4, 5, 7, 8, 10], name: "Lydian Augmented" },
+	"melodicMinor4": { type: `scale`, template: [2, 4, 6, 7, 9, 10], name: "Lydian Dominant" },
+	"melodicMinor5": { type: `scale`, template: [2, 4, 5, 7, 9, 10], name: "Mixolydian ♭6" },
+	"melodicMinor6": { type: `scale`, template: [2, 3, 5, 7, 8, 9], name: "Locrian ♮2" },
+	"melodicMinor7": { type: `scale`, template: [1, 3, 4, 6, 8, 9], name: "Altered Scale (Super Locrian)" },
+	"harmonicMinor2": { type: `scale`, template: [1, 3, 5, 7, 8, 11], name: "Locrian ♮6" },
+	"harmonicMinor3": { type: `scale`, template: [2, 4, 5, 7, 9, 11], name: "Ionian Augmented" },
+	"harmonicMinor4": { type: `scale`, template: [2, 4, 6, 7, 8, 10], name: "Dorian ♯4" },
+	"harmonicMinor5": { type: `scale`, template: [2, 4, 5, 7, 8, 11], name: "Phrygian Dominant" },
+	"harmonicMinor6": { type: `scale`, template: [2, 3, 5, 7, 9, 10], name: "Lydian ♯2" }, // Lydian ♯2
+	"harmonicMinor7": { type: `scale`, template: [1, 3, 4, 6, 7, 10], name: "Super Locrian ♭♭7 (Altered ♭♭7)" },
+	"harmonicMajor2": { type: `scale`, template: [2, 3, 5, 7, 9, 11], name: "Dorian ♭5" },
+	"harmonicMajor3": { type: `scale`, template: [1, 4, 5, 7, 8, 10], name: "Phrygian ♭4" },
+	"harmonicMajor4": { type: `scale`, template: [2, 4, 6, 7, 9, 11], name: "Lydian Minor" },
+	"harmonicMajor5": { type: `scale`, template: [2, 4, 5, 8, 9, 10], name: "Mixolydian ♭2" },
+	"harmonicMajor6": { type: `scale`, template: [1, 3, 5, 6, 8, 10], name: "Lydian Augmented ♯2" },
+	"harmonicMajor7": { type: `scale`, template: [2, 4, 5, 7, 8, 10], name: "Locrian ♭♭3" },
 }
 
 export const scaleNames = Object.keys(SCALES)
 
 export const chordsAndScales = { ...CHORDS, ...SCALES }
 
-export const getChordBlock = (chord: ChordName | CustomConst) => {
-	if (chord === CUSTOM) return
-
+export const getChordBlock = (chord: ChordName) => {
 	if (!(chord in CHORDS)) {
 		throw new Error (`Chord not found`)
 	}

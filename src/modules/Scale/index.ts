@@ -14,8 +14,8 @@ type ChordSize = 3 | 4 | 5 | 6 | 7
 export class Scale extends Notes {
 	_chords: Chord[] = []
 
-	constructor(root: NoteName, template: number[] | string) {
-		if (typeof template === `string`) template = getScaleBlock(template as ScaleName).template
+	constructor(root: NoteName, template: number[] | ScaleName) {
+		if (typeof template === `string`) template = getScaleBlock(template).template
 
 		super({
 			root,
