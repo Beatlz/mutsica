@@ -6,6 +6,8 @@ import {
 	SCALE,
 	getScaleBlock,
 	ScaleName,
+	RomanNumeral,
+	romanToChord,
 } from "../.."
 import { Notes } from "../Notes"
 
@@ -45,5 +47,9 @@ export class Scale extends Notes {
 
 			return new Chord(note, chord)
 		})
+	}
+
+	chordProgression(chords: RomanNumeral[]): Chord[] {
+		return chords.map(chord => romanToChord(chord, this) as Chord)
 	}
 }
