@@ -91,8 +91,6 @@ export const SCALES: Record<ScaleName, ScaleBuildingBlock> = {
 	"harmonicMajor7": { type: `scale`, template: [2, 4, 5, 7, 8, 10], name: "Locrian ♭♭3" },
 }
 
-export const scaleNames = Object.keys(SCALES)
-
 export const chordsAndScales = { ...CHORDS, ...SCALES }
 
 export const getChordBlock = (chord: ChordName) => {
