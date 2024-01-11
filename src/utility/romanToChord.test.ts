@@ -9,7 +9,7 @@ describe(`romanToChord`, () => {
 		expect(chord.notes).toEqual(expected)
 	})
 
-	it(`Should return a a VI and the chord template for a C7 (C, E, G, A#)`, () => {
+	it(`Should return the seventh note in the scale of C and the chord template for a C7 (C, E, G, A#)`, () => {
 		const { degreeNumber, template } = romanToChord(`VII7`) as { degreeNumber: number; template: number[]; }
 		const notes = new Chord(`C`, template).notes
 		const cMaj = new Scale(`C`, `maj`)
