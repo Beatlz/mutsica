@@ -3,6 +3,8 @@ import { Notes } from "../Notes"
 import { Frequency } from "tone/build/esm/core/type/Units"
 
 export class Chord extends Notes {
+	tones: Frequency[] = []
+
 	constructor(root: NoteName, template: number[] | ChordName) {
 		if (typeof template === `string`) template = getChordBlock(template).template
 
@@ -11,6 +13,8 @@ export class Chord extends Notes {
 			template,
 			templateType: CHORD,
 		})
+
+		this.close()
 	}
 
 	chordName(): string {
@@ -19,19 +23,21 @@ export class Chord extends Notes {
 			: `${this.root}${this.name}`
 	}
 
-	invert(n: number) {
+	invert(n: number): Frequency[] {
 		const chordSize = this.notes.length
 
 		if (n >= chordSize) throw new Error(`Invalid inversion number`)
 
-		return [...this.notes.slice(n, chordSize), ...this.notes.slice(0, n)]
+		const bassTone = this.tones[n]
+
+		return [bassTone, ...this.tones.slice(0, n), ...this.tones.slice(n)]
 	}
 
-	closed(bassNote = 3): Frequency[] {
-		return getSortedNotes(this.notes, 1, bassNote)
+	close(bassNote = 3) {
+		this.tones = getSortedNotes(this.notes, 1, bassNote)
 	}
 
-	open({ bassNote, brilliance }: { bassNote?: number, brilliance?: 2 | 3 | 4 }): Frequency[] {
-		return getSortedNotes(this.notes, brilliance || 2, bassNote || 3)
+	open({ bassNote, brilliance }: { bassNote?: number, brilliance?: 2 | 3 | 4 }) {
+		this.tones = getSortedNotes(this.notes, brilliance || 2, bassNote || 3)
 	}
 }
